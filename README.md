@@ -7,8 +7,14 @@ create AWS EC2 instance
 =================================
 1. create security group from default VPC
  in AWS console, create sg(java-sb-sg) from default VPC
+      a) inbound rules:
+   i) HTTP < TCP  80 > source(anywhere IPV4)
+   ii) SSH < TCP 22> source(My IP)
+      b) outbound rules:
+   i) all traffic
 2. create key-pair(.pem file) and download.
 3. create EC2 instance from amazon (AWS linux) image.
+
 
 
 connect to EC2 instance
