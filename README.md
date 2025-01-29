@@ -21,7 +21,6 @@ connect to ec2 instance from local machine:
 > sudo docker ps
 > sudo docker images
 > sudo docker run -d -p 80:8080 20706215/welcome-service:0.0.2
-ec2 instance command:
 
 
 
