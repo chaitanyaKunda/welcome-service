@@ -2,6 +2,7 @@ package com.mine;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,9 +14,17 @@ public class WelcomeServiceApplication {
 		SpringApplication.run(WelcomeServiceApplication.class, args);
 	}
 
-	@RequestMapping("/")
+	@GetMapping("/")
 	public String home(){
 		return "Hello Chaitanya, welcome to docker deployment, deployment through docker images\n thisis latest version";
+	}
+
+	private int counter;
+
+	@GetMapping("/count")
+	public String welcomeCounter(){
+		counter++;
+		return String.format("welcome service counter: %d",counter);
 	}
 
 }

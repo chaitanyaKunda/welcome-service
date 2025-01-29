@@ -1,8 +1,13 @@
-FROM openjdk:17-jdk-alpine
-RUN addgroup -S spring && adduser -S spring -G spring
-USER spring:spring
-ARG DEPENDENCY=target/dependency
-COPY ${DEPENDENCY}/BOOT-INF/lib /welcome-service/lib
-COPY ${DEPENDENCY}/META-INF /welcome-service/META-INF
-COPY ${DEPENDENCY}/BOOT-INF/classes /welcome-service
-ENTRYPOINT ["java","-cp","welcome-service:welcome-service/lib/*","com.mine.WelcomeServiceApplication"]
+# Stage 1: Build the application
+FROM maven:3.8.5-openjdk-17 AS build
+WORKDIR /app
+COPY pom.xml .
+COPY src ./src
+RUN mvn clean install
+
+# Stage 2: Run the application
+FROM openjdk:17-alpine
+WORKDIR /app
+COPY --from=build /app/target/welcome-service-0.0.1-SNAPSHOT.jar ./welcome-service.jar
+EXPOSE 8080
+CMD ["java","-jar","welcome-service.jar"]
