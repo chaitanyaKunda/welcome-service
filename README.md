@@ -1,7 +1,7 @@
 docker build command:
 ============================================
-docker buildx build --platform linux/amd64 -t 20706215/welcome-service:0.0.2 .
-docker push 20706215/welcome-service:0.0.2
+1. docker buildx build --platform linux/amd64 -t 20706215/welcome-service:0.0.2 .
+2. docker push 20706215/welcome-service:0.0.2
 
 create AWS EC2 instance
 =================================
@@ -14,20 +14,19 @@ create AWS EC2 instance
 connect to EC2 instance
 ===============================
 connect to ec2 instance from local machine:
-> ssh -i java-sb-key-pair.pem ec2-user@13.233.117.135
-> sudo yum update -y
-> sudo yum install docker -y
-> sudo service docker start
-> sudo docker ps
-> sudo docker images
-> sudo docker run -d -p 80:8080 20706215/welcome-service:0.0.2
+1. ssh -i java-sb-key-pair.pem ec2-user@13.233.117.135
+2. sudo yum update -y
+3. sudo yum install docker -y
+4. sudo service docker start
+5. sudo docker ps
+6. sudo docker images
+7. sudo docker run -d -p 80:8080 20706215/welcome-service:0.0.2
 
 
 
 
-spring boot with docker applicaiton 
-endpoint: 
+adding webhook in github repository
+=======================================
 
-webhook added on http://13.60.88.21:8080/github-webhook/
-jenkinks URL: http://13.60.88.21:8080/
+1. webhook added on http://<<jenkins_host>>>:8080/github-webhook/
 
